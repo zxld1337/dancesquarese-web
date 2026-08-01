@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { withBasePath } from "@/lib/basePath";
 
 export default function CompetitiveDance() {
   return (
@@ -33,7 +34,7 @@ export default function CompetitiveDance() {
         <Reveal delay={0.1} className="order-1 md:order-2">
           <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
             <Image
-              src="/images/versenytanc_small.png"
+              src={withBasePath("/images/versenytanc_small.png")}
               alt="Versenytánc"
               fill
               sizes="(min-width: 768px) 40vw, 90vw"

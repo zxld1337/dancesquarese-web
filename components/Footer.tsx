@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import CurrentYear from "@/components/CurrentYear";
+import { withBasePath } from "@/lib/basePath";
 
 export default function Footer() {
   return (
     <footer className="border-t border-border">
       <div className="container-custom py-12 flex flex-col md:flex-row items-center justify-between gap-6">
         <Link href="/#fooldal" className="flex items-center gap-3">
-          <Image src="/icon/DS.png" alt="Dance Square" width={40} height={40} className="rounded-full" />
+          <Image src={withBasePath("/icon/DS.png")} alt="Dance Square" width={40} height={40} className="rounded-full" />
           <span className="font-heading text-lg">Dance Square</span>
         </Link>
 

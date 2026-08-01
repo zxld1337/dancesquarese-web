@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import { withBasePath } from "@/lib/basePath";
 
 const monteCarlo = MonteCarlo({
   variable: "--font-heading",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   description:
     "Dance Square Sportegyesület – versenytánc, társastánc és esküvői tánctanfolyamok Hatvanban. Minden korosztálynak.",
   keywords: ["dance square", "dancesquare", "dancesquarese", "tánctanfolyam Hatvan"],
-  icons: { icon: "/icon/DS.png" },
+  icons: { icon: withBasePath("/icon/DS.png") },
 };
 
 export default function RootLayout({

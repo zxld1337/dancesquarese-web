@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import { withBasePath } from "@/lib/basePath";
 
 export default function SupportersTeaser() {
   return (
@@ -18,7 +19,7 @@ export default function SupportersTeaser() {
             className="inline-flex items-center gap-6 glass rounded-lg px-8 py-6 hover:border-accent transition-colors"
           >
             <Image
-              src="/images/supports/expodom-logo-hu.png"
+              src={withBasePath("/images/supports/expodom-logo-hu.png")}
               alt="Expodom logo"
               width={140}
               height={56}

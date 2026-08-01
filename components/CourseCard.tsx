@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Course } from "@/lib/courses";
+import { withBasePath } from "@/lib/basePath";
 
 export default function CourseCard({ course, priority }: { course: Course; priority?: boolean }) {
   return (
@@ -10,7 +11,7 @@ export default function CourseCard({ course, priority }: { course: Course; prior
     >
       <div className="relative aspect-[4/3] shrink-0">
         <Image
-          src={course.image}
+          src={withBasePath(course.image)}
           alt={course.title}
           fill
           sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 90vw"

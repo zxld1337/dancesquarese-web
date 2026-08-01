@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { withBasePath } from "@/lib/basePath";
 
 export const metadata: Metadata = {
   title: "Támogatóink | Dance Square",
@@ -21,7 +22,7 @@ export default function TamogatoinkPage() {
           <div className="glass rounded-lg overflow-hidden grid md:grid-cols-2 md:items-center">
             <div className="relative aspect-[9/10] self-start">
               <Image
-                src="/images/supports/expodom-tent-img.png"
+                src={withBasePath("/images/supports/expodom-tent-img.png")}
                 alt="Expodom rendezvénysátor"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
@@ -65,7 +66,7 @@ export default function TamogatoinkPage() {
                 className="mt-8 inline-block"
               >
                 <Image
-                  src="/images/supports/expodom-logo-hu.png"
+                  src={withBasePath("/images/supports/expodom-logo-hu.png")}
                   alt="Expodom logo"
                   width={160}
                   height={64}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { withBasePath } from "@/lib/basePath";
 
 export default function WeddingDance() {
   return (
@@ -8,7 +9,7 @@ export default function WeddingDance() {
         <Reveal>
           <div className="relative aspect-[2/3] rounded-lg overflow-hidden">
             <Image
-              src="/images/eskuvo_small.png"
+              src={withBasePath("/images/eskuvo_small.png")}
               alt="Esküvőstánc"
               fill
               sizes="(min-width: 768px) 40vw, 90vw"

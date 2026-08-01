@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { withBasePath } from "@/lib/basePath";
 
 export default function About() {
   return (
@@ -9,7 +10,7 @@ export default function About() {
           <Reveal>
             <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
               <Image
-                src="/images/csop_kep_v2.jpg"
+                src={withBasePath("/images/csop_kep_v2.jpg")}
                 alt="Dance Square csapat"
                 fill
                 sizes="(min-width: 768px) 40vw, 90vw"

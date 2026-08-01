@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { withBasePath } from "@/lib/basePath";
 
 const count = 12;
 const appearImages = Array.from({ length: count }, (_, i) => {
   const n = i + 1;
   const ext = n === 10 ? "jpg" : "png";
-  return `/images/appear/appear${n}.${ext}`;
+  return withBasePath(`/images/appear/appear${n}.${ext}`);
 });
 
 export default function Appearances() {

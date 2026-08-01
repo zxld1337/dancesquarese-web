@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { withBasePath } from "@/lib/basePath";
 
 const NAV_LINKS = [
   {
@@ -49,7 +50,7 @@ export default function Navbar() {
       <nav className="container-custom flex items-center justify-between py-3">
         <Link href="/#fooldal" className="shrink-0" onClick={() => setOpen(false)}>
           <Image
-            src="/icon/ds_logo_white.png"
+            src={withBasePath("/icon/ds_logo_white.png")}
             alt="Dance Square"
             width={140}
             height={64}

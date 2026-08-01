@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Reveal from "@/components/Reveal";
 import SignupForm from "@/components/SignupForm";
 import { courses, getCourse } from "@/lib/courses";
+import { withBasePath } from "@/lib/basePath";
 
 export function generateStaticParams() {
   return courses.map((course) => ({ slug: course.slug }));
@@ -30,7 +31,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
             <Reveal>
               <div className="relative aspect-video rounded-lg overflow-hidden mb-8">
                 <Image
-                  src={course.image}
+                  src={withBasePath(course.image)}
                   alt={course.title}
                   fill
                   sizes="(min-width: 1024px) 55vw, 90vw"
