@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+:root {
+  --background: #200c13;
+  --foreground: #f4eee3;
+
+  --main-bg: linear-gradient(
+    150deg,
+    #170810,
+    #23101a,
+    #341521,
+    #481a26,
+    #5e2029,
+    #75242a,
+    #8c2828
+  );
+
+  --color-card: #15100e;
+  --color-card-foreground: #f4eee3;
+
+  --color-primary: #b3151d;
+  --color-primary-foreground: #f4eee3;
+
+  --color-secondary: #1c1714;
+  --color-secondary-foreground: #f4eee3;
+
+  --color-accent: #c7a463;
+  --color-accent-foreground: #15100e;
+
+  --color-muted: #171310;
+  --color-muted-foreground: #b7ab9b;
+
+  --color-border: rgba(244, 238, 227, 0.1);
+  --color-ring: #b3151d;
+
+  --radius: 0.9rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--color-card);
+  --color-card-foreground: var(--color-card-foreground);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-ring: var(--color-ring);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 8px);
+}
+
+/*
+ * Everything below is wrapped in Tailwind's own layers (base/components).
+ * Cascade layers rank by layer order first, specificity second — CSS written
+ * outside any @layer is treated as "unlayered" and unconditionally beats
+ * ALL layered rules, including Tailwind utilities, no matter how specific
+ * the utility class is. Without this wrapping, a utility like `font-body`
+ * applied directly on an element can never override a plain `h3 { ... }`
+ * rule declared here, which silently breaks any per-element override.
+ */
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    background: var(--background);
+  }
+
+  body {
+    background-color: var(--background);
+    background-image: var(--main-bg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--foreground);
+    position: relative;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+}
+
+@layer components {
+  .container-custom {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-custom {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .section-py {
+    padding-block: clamp(4rem, 8vw, 7rem);
+  }
+
+  /* Standalone inner pages (not the homepage) need extra top clearance for
+     the fixed navbar. A single dedicated class avoids fighting .section-py's
+     padding-block for the same longhand property. */
+  .page-py {
+    padding-top: 9rem;
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+  }
+
+  .glass {
+    background: linear-gradient(180deg, rgba(244, 238, 227, 0.06), rgba(244, 238, 227, 0.02));
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Solid-enough panel for fixed/overlaid content that must stay readable
+     regardless of what's behind it (nav dropdowns, back-to-top button) —
+     .glass's ~4% tint is too transparent for elements that float over
+     arbitrary scrolled content. */
+  .solid-panel {
+    background: #15080e;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  .gold-divider {
+    height: 1px;
+    width: 4rem;
+    background: linear-gradient(90deg, var(--color-accent), transparent);
+  }
+
+  .nav-link {
+    position: relative;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--foreground);
+    text-decoration: none;
+    cursor: pointer;
+    padding-block: 0.25rem;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: right;
+    background: var(--color-accent);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
